@@ -6,29 +6,24 @@
     <title>For Monique ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        /* Tarayıcı hatalarını önlemek için temel sıfırlama */
-        * { margin: 0; padding: 0; box-box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body, html {
-            height: 100%;
-            width: 100%;
-            background-color: #0f0c29;
+            height: 100%; width: 100%;
+            background-color: #000;
             overflow: hidden;
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* GİRİŞ EKRANI - BUTONUN OLDUĞU YER */
+        /* GİRİŞ EKRANI */
         #intro-screen {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, #1f1c2c, #0f0c29);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #0f0c29;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999; /* En üstte olduğundan emin oluyoruz */
+            z-index: 9999;
             cursor: pointer;
         }
 
@@ -40,34 +35,27 @@
             font-size: 1.4rem;
             font-weight: 600;
             border-radius: 50px;
-            cursor: pointer;
             box-shadow: 0 0 30px rgba(255, 77, 109, 0.6);
             animation: pulse 1.5s infinite;
-            pointer-events: auto; /* Tıklanabilirliği garanti eder */
-            z-index: 10000;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
-        /* ANA İÇERİK - BAŞLANGIÇTA GİZLİ */
+        /* ANA İÇERİK */
         #main-content {
             display: none;
-            opacity: 0;
-            transition: opacity 1.5s ease-in;
-            height: 100%;
-            width: 100%;
+            height: 100vh;
+            width: 100vw;
             position: relative;
         }
 
+        /* Manzara Resmi - Daha Sağlam Link */
         .bg-image {
-            background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1920&auto=format&fit=crop');
+            background-image: url('https://wallpaperaccess.com/full/1154341.jpg');
             background-size: cover;
             background-position: center;
-            filter: blur(4px) brightness(0.6);
+            background-repeat: no-repeat;
+            filter: blur(3px) brightness(0.5);
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
@@ -75,30 +63,27 @@
 
         .content-box {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             padding: 30px;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
             border-radius: 25px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 85%;
-            max-width: 380px;
+            width: 85%; max-width: 380px;
             text-align: center;
         }
 
         .profile-pic {
-            width: 180px;
-            height: 180px;
+            width: 200px; height: 200px;
             border-radius: 50%;
-            border: 4px solid #ff4d6d;
+            border: 5px solid #ff4d6d;
             object-fit: cover;
             margin-bottom: 15px;
         }
 
-        h1 { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: #ff4d6d; margin: 10px 0; }
-        p { font-style: italic; color: #ddd; font-size: 1rem; line-height: 1.5; }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; color: #ff4d6d; }
+        p { font-style: italic; color: #fff; font-size: 1.1rem; line-height: 1.6; }
 
     </style>
 </head>
@@ -112,27 +97,27 @@
         <div class="bg-image"></div>
         <div class="content-box">
             <img src="Monique.jpg" alt="Monique" class="profile-pic">
-            <h2 style="color: #ffd700; letter-spacing: 2px; font-size: 1rem;">HAPPY BIRTHDAY</h2>
+            <h2 style="color: #ffd700; letter-spacing: 2px; font-size: 1.1rem;">HAPPY BIRTHDAY</h2>
             <h1>Monique</h1>
             <p>"May your new year be as bright and beautiful as you are. Wishing you a day filled with love and laughter!"</p>
         </div>
     </div>
 
     <audio id="myAudio" loop>
-        <source src="MONIQUE Happy Birthday Song – Happy Birthday to You [6JXXlB-b4zs].mp3" type="audio/mpeg">
+        <source src="music.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         function startSurprise() {
-            // 1. Müziği Çal
             var audio = document.getElementById("myAudio");
-            audio.play();
+            
+            // Müziği çal ve sayfayı değiştir
+            audio.play().catch(function(error) {
+                console.log("Müzik çalma hatası:", error);
+            });
 
-            // 2. Ekranları Değiştir
             document.getElementById("intro-screen").style.display = "none";
-            var main = document.getElementById("main-content");
-            main.style.display = "block";
-            setTimeout(() => { main.style.opacity = "1"; }, 50);
+            document.getElementById("main-content").style.display = "block";
         }
     </script>
 </body>
