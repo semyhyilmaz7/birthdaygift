@@ -3,58 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Monique!</title>
+    <title>Happy Birthday Monique! ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
         body { 
             background: #0f0c29; 
-            background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29);
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
             color: white;
             text-align: center;
-            font-family: 'Georgia', serif;
+            font-family: 'Montserrat', sans-serif;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             margin: 0;
+            overflow: hidden;
         }
         .content {
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            padding: 40px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.05);
+            padding: 50px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
         h1 { 
-            font-size: 3.5rem; 
-            color: #ffd700; /* Altın rengi */
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-            margin-bottom: 10px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem; 
+            color: #ff4d6d; /* Canlı bir pembe/kırmızı */
+            text-shadow: 3px 3px 15px rgba(255, 77, 109, 0.5);
+            margin: 10px 0;
         }
         h2 {
-            font-size: 1.8rem;
-            color: #ffffff;
-            font-weight: 300;
-            letter-spacing: 2px;
+            font-size: 1.2rem;
+            color: #ffd700;
+            font-weight: 600;
+            letter-spacing: 5px;
+            text-transform: uppercase;
         }
         p { 
-            font-size: 1.2rem; 
+            font-size: 1.4rem; 
             max-width: 80%;
-            margin: 20px auto;
-            color: #ccc;
+            margin: 25px auto;
+            color: #fff;
             line-height: 1.6;
+            font-weight: 300;
         }
-        .sparkles { font-size: 2rem; }
+        .heart {
+            color: #ff4d6d;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .decor { font-size: 3rem; margin: 15px; }
     </style>
 </head>
 <body>
     <div class="content">
-        <div class="sparkles">✨ ✨ ✨</div>
+        <div class="decor">🥳 ✨ 🎈</div>
         <h2>Happy Birthday</h2>
-        <h1>Monique Oroyan</h1>
-        <p>May your new year be as bright and beautiful as you are. <br> Wishing you a day filled with love and laughter!</p>
-        <div class="sparkles">🎂 🥂 ✨</div>
+        <h1>Monique <span class="heart">❤️</span></h1>
+        <p>May your new year be as bright and beautiful as you are. <br> 
+        Wishing you a day filled with love and laughter!</p>
+        <div class="decor">🎂 🍾 💖</div>
     </div>
 </body>
 </html>
