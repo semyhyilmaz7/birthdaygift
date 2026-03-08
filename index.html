@@ -3,149 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Monique! ❤️</title>
+    <title>For Monique ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
+        /* Tarayıcı hatalarını önlemek için temel sıfırlama */
+        * { margin: 0; padding: 0; box-box-sizing: border-box; }
+        
         body, html {
             height: 100%;
-            margin: 0;
+            width: 100%;
+            background-color: #0f0c29;
+            overflow: hidden;
             font-family: 'Montserrat', sans-serif;
-            color: white;
-            text-align: center;
-            overflow: hidden; /* Sayfa kaymasın */
         }
 
-        /* 1. Giriş Ekranı (Üst Katman) */
+        /* GİRİŞ EKRANI - BUTONUN OLDUĞU YER */
         #intro-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #0f0c29; /* Koyu lacivert */
+            background: radial-gradient(circle, #1f1c2c, #0f0c29);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 100; /* En üstte durur */
-            transition: opacity 1s ease, visibility 1s; /* Kaybolma animasyonu */
+            z-index: 9999; /* En üstte olduğundan emin oluyoruz */
+            cursor: pointer;
         }
 
-        /* Kalp Şeklindeki Buton */
         .heart-button {
-            background-color: #ff4d6d; /* Canlı pembe/kırmızı */
+            background-color: #ff4d6d;
             color: white;
             border: none;
-            padding: 30px 60px;
-            font-size: 1.5rem;
+            padding: 25px 50px;
+            font-size: 1.4rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 50px; /* Yuvarlak köşeler */
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.5);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            animation: pulseButton 2s infinite; /* Atan kalp efekti */
+            box-shadow: 0 0 30px rgba(255, 77, 109, 0.6);
+            animation: pulse 1.5s infinite;
+            pointer-events: auto; /* Tıklanabilirliği garanti eder */
+            z-index: 10000;
         }
 
-        @keyframes pulseButton {
-            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 77, 109, 0.5); }
-            50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(255, 77, 109, 0.7); }
-            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 77, 109, 0.5); }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
-        .heart-button:hover {
-            background-color: #ff758f;
-            transform: translateY(-5px);
-        }
-
-        .heart-button:active { transform: translateY(2px); }
-
-        /* 2. Asıl İçerik Ekranı (Alt Katman) */
+        /* ANA İÇERİK - BAŞLANGIÇTA GİZLİ */
         #main-content {
-            display: none; /* Başlangıçta gizli */
+            display: none;
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
             height: 100%;
+            width: 100%;
             position: relative;
-            z-index: 1;
         }
 
-        /* Arka Plan: Şık bir doğa manzarası */
         .bg-image {
             background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            filter: blur(5px) brightness(0.7); /* Bulanık ve koyu */
-            position: fixed;
-            width: 100%;
-            height: 100%;
+            filter: blur(4px) brightness(0.6);
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
         }
 
-        .main-container {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
         .content-box {
-            padding: 40px;
-            border-radius: 30px;
-            background: rgba(0, 0, 0, 0.5); /* Koyu şeffaf */
-            backdrop-filter: blur(10px); /* Cam efekti */
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 400px;
-            width: 90%;
-            animation: fadeInContent 1.5s ease-out; /* İçerik gelme animasyonu */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 85%;
+            max-width: 380px;
+            text-align: center;
         }
 
-        @keyframes fadeInContent {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
         .profile-pic {
-            width: 220px;
-            height: 220px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            border: 5px solid #ff4d6d;
+            border: 4px solid #ff4d6d;
             object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 0 25px rgba(255, 77, 109, 0.6);
+            margin-bottom: 15px;
         }
 
-        h1 { 
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem; 
-            color: #ff4d6d;
-            margin: 10px 0;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-        }
-
-        h2 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 3px; color: #ffd700; }
-        
-        p { font-size: 1.1rem; line-height: 1.6; font-style: italic; color: #eee; margin-top: 20px;}
-        
-        .heart-icon { display: inline-block; animation: pulseHeart 1.5s infinite; color: #ff4d6d; }
-        @keyframes pulseHeart { 0% {transform: scale(1);} 50% {transform: scale(1.2);} 100% {transform: scale(1);} }
-        
-        /* Müzik Çalar: Ekranda görünmeyecek (hidden) */
-        audio { display: none; }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: #ff4d6d; margin: 10px 0; }
+        p { font-style: italic; color: #ddd; font-size: 1rem; line-height: 1.5; }
 
     </style>
 </head>
 <body>
 
-    <div id="intro-screen">
-        <button class="heart-button" onclick="startSurprise()">Press for a Surprise! ❤️</button>
+    <div id="intro-screen" onclick="startSurprise()">
+        <button class="heart-button">Press for a Surprise! ❤️</button>
     </div>
 
     <div id="main-content">
         <div class="bg-image"></div>
+        <div class="content-box">
+            <img src="Monique.jpg" alt="Monique" class="profile-pic">
+            <h2 style="color: #ffd700; letter-spacing: 2px; font-size: 1rem;">HAPPY BIRTHDAY</h2>
+            <h1>Monique</h1>
+            <p>"May your new year be as bright and beautiful as you are. Wishing you a day filled with love and laughter!"</p>
+        </div>
+    </div>
 
-        <div class="main-container">
-            <div class="content-box">
-                <img src="Monique.jpg" alt="Monique" class="
+    <audio id="myAudio" loop>
+        <source src="MONIQUE Happy Birthday Song – Happy Birthday to You [6JXXlB-b4zs].mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function startSurprise() {
+            // 1. Müziği Çal
+            var audio = document.getElementById("myAudio");
+            audio.play();
+
+            // 2. Ekranları Değiştir
+            document.getElementById("intro-screen").style.display = "none";
+            var main = document.getElementById("main-content");
+            main.style.display = "block";
+            setTimeout(() => { main.style.opacity = "1"; }, 50);
+        }
+    </script>
+</body>
+</html>
