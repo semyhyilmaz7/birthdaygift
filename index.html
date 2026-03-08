@@ -7,76 +7,75 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
         body { 
-            background: #0f0c29; 
             background: linear-gradient(135deg, #1f1c2c, #928dab);
             color: white;
             text-align: center;
             font-family: 'Montserrat', sans-serif;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             margin: 0;
-            overflow: hidden;
         }
         .content {
-            padding: 50px;
-            border-radius: 50px;
+            padding: 40px;
+            border-radius: 30px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            animation: float 3s ease-in-out infinite;
+            max-width: 400px;
+            width: 90%;
+            animation: fadeIn 2s ease-in;
         }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+        
+        .profile-pic {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 5px solid #ff4d6d;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 0 25px rgba(255, 77, 109, 0.6);
         }
         h1 { 
             font-family: 'Dancing Script', cursive;
-            font-size: 5rem; 
-            color: #ff4d6d; /* Canlı bir pembe/kırmızı */
-            text-shadow: 3px 3px 15px rgba(255, 77, 109, 0.5);
-            margin: 10px 0;
-        }
-        h2 {
-            font-size: 1.2rem;
-            color: #ffd700;
-            font-weight: 600;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-        }
-        p { 
-            font-size: 1.4rem; 
-            max-width: 80%;
-            margin: 25px auto;
-            color: #fff;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-        .heart {
+            font-size: 4rem; 
             color: #ff4d6d;
-            display: inline-block;
-            animation: pulse 1.5s infinite;
+            margin: 10px 0;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+        p { font-size: 1.2rem; line-height: 1.6; font-style: italic; color: #eee; }
+        .heart { display: inline-block; animation: pulse 1.5s infinite; color: #ff4d6d; }
+        @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.2);} 100% {transform: scale(1);} }
+        
+        audio {
+            margin-top: 30px;
+            width: 100%;
+            border-radius: 50px;
+            filter: sepia(20%) saturate(70%) grayscale(1) contrast(99) invert(12%); /* Oynatıcıyı koyu tema yapar */
         }
-        .decor { font-size: 3rem; margin: 15px; }
+        .music-label { font-size: 0.8rem; margin-top: 10px; color: #ffd700; font-weight: bold; }
     </style>
 </head>
 <body>
+
     <div class="content">
-        <div class="decor">🥳 ✨ 🎈</div>
+        <img src="Monique.jpg" alt="Monique" class="profile-pic">
+        
         <h2>Happy Birthday</h2>
         <h1>Monique <span class="heart">❤️</span></h1>
-        <p>May your new year be as bright and beautiful as you are. <br> 
-        Wishing you a day filled with love and laughter!</p>
-        <div class="decor">🎂 🍾 💖</div>
+        
+        <p>"May your new year be as bright and beautiful as you are. Wishing you a day filled with love and laughter!"</p>
+
+        <audio controls loop>
+            <source src="MONIQUE Happy Birthday Song – Happy Birthday to You [6JXXlB-b4zs].mp3" type="audio/mpeg">
+            Tarayıcın müzik çalmayı desteklemiyor kanka.
+        </audio>
+        <div class="music-label">Press Play for Surprise! 🎶</div>
     </div>
+
 </body>
 </html>
