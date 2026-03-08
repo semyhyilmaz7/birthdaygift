@@ -15,16 +15,71 @@
             overflow: hidden; /* Sayfa kaymasın */
         }
 
-        /* 1. Arka Plan: Şık bir doğa manzarası */
+        /* 1. Giriş Ekranı (Üst Katman) */
+        #intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0f0c29; /* Koyu lacivert */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100; /* En üstte durur */
+            transition: opacity 1s ease, visibility 1s; /* Kaybolma animasyonu */
+        }
+
+        /* Kalp Şeklindeki Buton */
+        .heart-button {
+            background-color: #ff4d6d; /* Canlı pembe/kırmızı */
+            color: white;
+            border: none;
+            padding: 30px 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px; /* Yuvarlak köşeler */
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: pulseButton 2s infinite; /* Atan kalp efekti */
+        }
+
+        @keyframes pulseButton {
+            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 77, 109, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(255, 77, 109, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 77, 109, 0.5); }
+        }
+
+        .heart-button:hover {
+            background-color: #ff758f;
+            transform: translateY(-5px);
+        }
+
+        .heart-button:active { transform: translateY(2px); }
+
+        /* 2. Asıl İçerik Ekranı (Alt Katman) */
+        #main-content {
+            display: none; /* Başlangıçta gizli */
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Arka Plan: Şık bir doğa manzarası */
         .bg-image {
             background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            filter: blur(5px) brightness(0.7); /* Fotoğrafı hafif bulanık ve koyu yapar */
+            filter: blur(5px) brightness(0.7); /* Bulanık ve koyu */
             position: fixed;
             width: 100%;
             height: 100%;
-            z-index: -1; /* En arkaya atar */
+            z-index: -1;
         }
 
         .main-container {
@@ -33,22 +88,24 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 1; /* İçeriği öne çeker */
         }
 
-        .content {
+        .content-box {
             padding: 40px;
             border-radius: 30px;
-            background: rgba(0, 0, 0, 0.4); /* Koyu şeffaf arka plan */
+            background: rgba(0, 0, 0, 0.5); /* Koyu şeffaf */
             backdrop-filter: blur(10px); /* Cam efekti */
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
             border: 1px solid rgba(255, 255, 255, 0.2);
             max-width: 400px;
             width: 90%;
-            animation: fadeIn 2s ease-in;
+            animation: fadeInContent 1.5s ease-out; /* İçerik gelme animasyonu */
         }
 
-        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+        @keyframes fadeInContent {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         
         .profile-pic {
             width: 220px;
@@ -72,10 +129,23 @@
         
         p { font-size: 1.1rem; line-height: 1.6; font-style: italic; color: #eee; margin-top: 20px;}
         
-        .heart { display: inline-block; animation: pulse 1.5s infinite; color: #ff4d6d; }
-        @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.2);} 100% {transform: scale(1);} }
+        .heart-icon { display: inline-block; animation: pulseHeart 1.5s infinite; color: #ff4d6d; }
+        @keyframes pulseHeart { 0% {transform: scale(1);} 50% {transform: scale(1.2);} 100% {transform: scale(1);} }
         
-        /* 2. Müzik Çalar: Ekranda görünmeyecek (hidden) */
+        /* Müzik Çalar: Ekranda görünmeyecek (hidden) */
         audio { display: none; }
 
-        /* 3. Müzik Başlatma Butonu: Şık ve dikkat
+    </style>
+</head>
+<body>
+
+    <div id="intro-screen">
+        <button class="heart-button" onclick="startSurprise()">Press for a Surprise! ❤️</button>
+    </div>
+
+    <div id="main-content">
+        <div class="bg-image"></div>
+
+        <div class="main-container">
+            <div class="content-box">
+                <img src="Monique.jpg" alt="Monique" class="
